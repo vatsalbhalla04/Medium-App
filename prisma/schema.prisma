@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String  @id @default(uuid())
+  email    String @unique
+  name     String?
+  password String
+  posts    Post[]
+}
+
+model Post {
+  id        String @id @default(uuid())
+  title     String
+  content   String
+  published Boolean
+  authorId  String
+  author    User   @relation(fields: [authorId], references: [id])
+}
+
+/*
+authorId is the foreign key in Post.
+
+author is the relation pointing to the User model.
+
+references: [id] means it links to the id field in User
+*/
