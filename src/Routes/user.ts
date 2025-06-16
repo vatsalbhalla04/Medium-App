@@ -15,7 +15,7 @@ userRoute.post("/signup", zValidator("json", signupSchema), async (c) => {
     const user = await prisma.user.create({
       data: {
         email: body.email,
-        password: body.password, 
+        password: body.password,
         name: body.name,
       },
     });
@@ -34,10 +34,13 @@ userRoute.post("/signin", async (c) => {
     const { email, password } = await c.req.json();
 
     const user = await prisma.user.findUnique({
-      where: { email },
+      where: {
+        email,
+        password,
+      },
     });
 
-    if (!user || user.password !== password) {
+    if (!user) {
       return c.json({ error: "Invalid email or Password" }, 401);
     }
 
