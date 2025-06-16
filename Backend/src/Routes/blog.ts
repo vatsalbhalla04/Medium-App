@@ -5,6 +5,7 @@ import { createPrismaClient } from "../lib/primsa";
 
 type Variables = {
   userId: string;
+  // defining this is necessary to avoid the type error.
 };
 
 const blogRouter = new Hono<{ Variables: Variables }>();
