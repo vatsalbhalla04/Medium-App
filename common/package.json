@@ -1,0 +1,20 @@
+{
+  "name": "@vatsalbhalla03/medium-common",
+  "version": "1.0.1",
+  "description": "Common zod validators for Medium App",
+  "main": "dist/zodValidations.js",
+  "keywords": [
+    "zod",
+    "validators",
+    "common"
+  ],
+  "author": "Vatsal Bhalla",
+  "license": "ISC",
+  "type": "commonjs",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "zod": "^3.25.67"
+  }
+}

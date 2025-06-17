@@ -2,6 +2,8 @@ import { Hono } from "hono";
 import { env } from "hono/adapter";
 import { verify } from "hono/jwt";
 import { createPrismaClient } from "../lib/primsa";
+import { zValidator } from "@hono/zod-validator";
+import { createBlog, updateBlog } from "@vatsalbhalla03/medium-common";
 
 type Variables = {
   userId: string;
@@ -34,7 +36,7 @@ blogRouter.use("/*", async (c, next) => {
   }
 });
 
-blogRouter.post("/writeBlog", async (c) => {
+blogRouter.post("/writeBlog",zValidator("json",createBlog), async (c) => {
   const body = await c.req.json();
   const prisma = createPrismaClient(c);
   const userId = c.get("userId");
@@ -54,7 +56,7 @@ blogRouter.post("/writeBlog", async (c) => {
   }
 });
 
-blogRouter.put("/updateBlog", async (c) => {
+blogRouter.put("/updateBlog",zValidator("json",updateBlog), async (c) => {
   const body = await c.req.json();
   const prisma = createPrismaClient(c);
 
