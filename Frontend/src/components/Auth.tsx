@@ -4,7 +4,7 @@ import { useRef } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "../config/configg";
 import ButtonComponent from "./ButtonComponent";
-import { toast } from "react-toastify"; // ✅
+import { toast } from "react-toastify";
 
 export default function Auth({ type }: { type: "signup" | "signin" }) {
   const emailRef = useRef<HTMLInputElement>(null);
@@ -36,10 +36,12 @@ export default function Auth({ type }: { type: "signup" | "signin" }) {
     const password = passwordRef?.current?.value;
 
     try {
-      await axios.post(`${BACKEND_URL}/api/v1/user/signin`, {
+      const response = await axios.post(`${BACKEND_URL}/api/v1/user/signin`, {
         email,
         password,
       });
+      const token = response.data.token; 
+      localStorage.setItem("token",token);
       toast.success("Logged in successfully");
       navigate("/blog");
     } catch (error) {
