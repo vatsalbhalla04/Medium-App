@@ -1,1 +1,1 @@
-export const BACKEND_URL = "Cloud Flare Wokrer Link"
+export const BACKEND_URL = "Cloud Flare Worker Link"
