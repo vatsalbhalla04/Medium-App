@@ -1,7 +1,9 @@
+import Auth from "../components/Auth";
+
 export default function Signin(){
     return (
         <div>
-            SignIn Page
+            <Auth type="signin"/>
         </div>
     )
 }
