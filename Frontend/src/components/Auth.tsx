@@ -43,7 +43,7 @@ export default function Auth({ type }: { type: "signup" | "signin" }) {
       const token = response.data.token; 
       localStorage.setItem("token",token);
       toast.success("Logged in successfully");
-      navigate("/blog/allblogs");
+      navigate("/blogs");
     } catch (error) {
       toast.error("Signin failed");
     }
