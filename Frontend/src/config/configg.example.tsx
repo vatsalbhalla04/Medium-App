@@ -1,1 +1,0 @@
-export const BACKEND_URL = "Cloud Flare Worker Link"
