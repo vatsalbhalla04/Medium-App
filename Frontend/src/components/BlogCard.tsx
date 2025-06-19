@@ -26,24 +26,20 @@ export default function BlogCard({
         <div className="flex items-center space-x-3 text-sm text-gray-600">
           <Avtar authname={authorName} />
           <span className="font-medium">{authorName}</span>
-          <span className="text-gray-400">•</span>
+          {/* <span className="text-gray-400">•</span> */}
           <span>{publisedDate}</span>
         </div>
 
-        {/* Title */}
         <h2 className="text-xl font-semibold text-gray-900">{title}</h2>
 
-        {/* Content Preview */}
         <p className="text-gray-700 leading-relaxed">
           {isShortContent ? content : content.slice(0, 70) + "...."}
         </p>
 
-        {/* Read Time */}
         <div className="text-xs text-gray-400">
           {`${Math.ceil(content.length / 100)} min read`}
         </div>
 
-        {/* Divider */}
         <div className="bg-slate-200 h-[1px] w-full" />
       </div>
     </div>

@@ -5,8 +5,6 @@ export const BlogSkeleton = () => {
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 bg-gray-400 rounded-full" />
           <div className="h-3 w-24 bg-gray-400 rounded" />
-          <div className="h-1 w-1 bg-gray-400 rounded-full" />
-          <div className="h-3 w-12 bg-gray-400 rounded" />
         </div>
   
         {/* Title */}
@@ -16,11 +14,7 @@ export const BlogSkeleton = () => {
         <div className="space-y-2">
           <div className="h-3 bg-gray-400 rounded w-full" />
           <div className="h-3 bg-gray-400 rounded w-5/6" />
-        </div>
-  
-        {/* Read time */}
-        <div className="h-3 w-20 bg-gray-400 rounded mt-4" />
-  
+        </div>  
         <span className="sr-only">Loading...</span>
       </div>
     );

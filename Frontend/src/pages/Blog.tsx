@@ -1,10 +1,20 @@
+import { useNavigate } from "react-router-dom";
 import AppBar from "../components/AppBar";
 import BlogCard from "../components/BlogCard";
 import { BlogSkeleton } from "../components/BlogSkeleton ";
 import { useBlogs } from "../hooks/blogHooks";
+import { useEffect } from "react";
 
 export default function Blog() {
   const { loading, blogs } = useBlogs();
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/signin"); 
+    }
+  }, [token, navigate]);
 
   if (loading) {
     return (

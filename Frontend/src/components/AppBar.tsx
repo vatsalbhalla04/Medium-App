@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import LogoutButton from "./logoutIcon";
 import logo from "/src/assets/medium.svg";
 
-
-
 export default function AppBar() {
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm px-6 py-4">
