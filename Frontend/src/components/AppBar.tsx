@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import LogoutButton from "./logoutIcon";
 import logo from "/src/assets/medium.svg";
 
 
@@ -32,6 +33,9 @@ export default function AppBar() {
               New Blog
             </button>
           </Link>
+          <div>
+            <LogoutButton/>
+          </div>
         </div>
       </div>
     </header>
