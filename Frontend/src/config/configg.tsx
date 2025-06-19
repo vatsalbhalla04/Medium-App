@@ -1,1 +1,1 @@
-export const BACKEND_URL = "Your CloudFlare Backend Depolyed URL"
+export const BACKEND_URL = "https://backend.vatsalbhalla.workers.dev"
