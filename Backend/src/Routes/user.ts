@@ -1,10 +1,10 @@
 import { Hono } from "hono";
 import { createPrismaClient } from "../lib/primsa";
 import { zValidator } from "@hono/zod-validator";
-import {  } from "./../";
+import {} from "./../";
 import { sign } from "hono/jwt";
 import { env } from "hono/adapter";
-import {signinInput, signupInput} from '@vatsalbhalla03/medium-common';
+import { signinInput, signupInput } from "@vatsalbhalla03/medium-common";
 
 const userRoute = new Hono();
 
@@ -28,7 +28,7 @@ userRoute.post("/signup", zValidator("json", signupInput), async (c) => {
   }
 });
 
-userRoute.post("/signin",zValidator("json",signinInput), async (c) => {
+userRoute.post("/signin", zValidator("json", signinInput), async (c) => {
   try {
     const { JWT_SECRET } = env<{ JWT_SECRET: string }>(c);
     const prisma = createPrismaClient(c);
@@ -45,7 +45,11 @@ userRoute.post("/signin",zValidator("json",signinInput), async (c) => {
       return c.json({ error: "Invalid email or Password" }, 401);
     }
 
-    const token = await sign({ id: user.id }, JWT_SECRET);
+    const token = await sign(
+      { id: user.id, exp: Math.floor(Date.now() / 1000) + 60 * 60 }, // 1 hour
+      JWT_SECRET
+    );
+
     return c.json({ token }, 200);
   } catch (error) {
     console.error("Signin Error:", error);

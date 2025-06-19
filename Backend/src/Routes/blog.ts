@@ -86,6 +86,16 @@ blogRouter.get("/getBlog/:id", async (c) => {
       where: {
         id,
       },
+      select:{
+        id: true,
+        title: true,
+        content: true,
+        author: {
+          select:{
+            name: true
+          }
+        }
+      }
     });
 
     if (!blog) {
@@ -102,7 +112,18 @@ blogRouter.get("/allBlogs", async (c) => {
   const prisma = createPrismaClient(c);
 
   try {
-    const blogs = await prisma.post.findMany();
+    const blogs = await prisma.post.findMany({
+      select:{
+        content: true,
+        title: true,
+        id: true,
+        author:{
+          select:{
+            name: true
+          }
+        }
+      }
+    });
     return c.json({ blogs }, 200);
   } catch (error) {
     return c.json({ message: `Could not fetch blogs: ${error}` }, 500);

@@ -1,23 +1,27 @@
+import { Link } from "react-router-dom";
 import Avtar from "./Avatar";
 
-interface BlogCardInp {
-  authorName: string;
-  title: string;
-  content: string;
-  publisedDate: string;
+export interface BlogCardInp {
+  authorName ?: string;
+  id ?: number;
+  title ?: string;
+  content : string;
+  publisedDate ?: string;
 }
 
 export default function BlogCard({
+  id,
   authorName,
   title,
   content,
   publisedDate,
 }: BlogCardInp) {
+
   const isShortContent = content.length <= 70;
 
-
   return (
-    <div className="flex justify-center pt-[5%]">
+    <Link to={`/blog/getBlog/${id}`}>
+      <div className="flex justify-center pt-[5%]">
       <div className="bg-white border border-gray-300 shadow-md rounded-lg w-full max-w-2xl md:max-w-4xl p-4 sm:p-5 md:p-6 mx-4 sm:mx-auto space-y-3 hover:shadow-lg transition-shadow duration-200">
         <div className="flex items-center space-x-3 text-sm text-gray-600">
           <Avtar authname={authorName} />
@@ -43,5 +47,6 @@ export default function BlogCard({
         <div className="bg-slate-200 h-[1px] w-full" />
       </div>
     </div>
+    </Link>
   );
 }
