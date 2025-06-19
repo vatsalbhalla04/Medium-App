@@ -19,7 +19,6 @@ export default function DetailBlogComp({
         <h1 className="text-4xl font-extrabold text-gray-900 leading-tight mb-4">
           {blog.title}
         </h1>
-        <div className="text-slate-500 mb-2">Posted on 2nd December 2023</div>
         <p className="text-md text-gray-500 mb-8">
           By <span className="font-semibold text-gray-700">{blog.author.name}</span>
         </p>
