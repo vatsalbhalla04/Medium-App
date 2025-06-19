@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import Avtar from "./Avatar";
 
 export interface BlogCardInp {
-  authorName ?: string;
-  id ?: number;
-  title ?: string;
+  authorName : string;
+  id : number;
+  title : string;
   content : string;
-  publisedDate ?: string;
+  publisedDate : string;
 }
 
 export default function BlogCard({

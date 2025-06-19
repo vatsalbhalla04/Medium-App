@@ -37,7 +37,7 @@ export  function useBlogs() {
 
 export function useBlog({id}:{id:string}){
   const [loading, setLoading] = useState(true);
-  const [blog, setBlog] = useState<BlogProps[]>([]);
+  const [blog, setBlog] = useState<BlogProps | null>(null);
 
   useEffect(() => {
     axios
