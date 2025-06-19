@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { DetailBlogPage } from "./pages/DetailBlogPage";
 import { LandingPage } from "./pages/LandingPage";
 import { WriteBlog } from "./pages/WriteBlog";
+import EditBlog from "./pages/EditBlog";
 
 export default function MainMedium() {
   return (
@@ -19,6 +20,7 @@ export default function MainMedium() {
           <Route path="/blogs" element={<Blog />} />
           <Route path="/blog/getBlog/:id" element={<DetailBlogPage/>} />
           <Route path="/blog/writeBlog/" element={<WriteBlog/>} />
+          <Route path="/blog/edit/:id" element={<EditBlog />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer position="top-center" autoClose={2000} />

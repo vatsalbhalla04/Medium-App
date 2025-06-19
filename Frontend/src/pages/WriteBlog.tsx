@@ -3,6 +3,7 @@ import AppBar from "../components/AppBar";
 import { useState } from "react";
 import { BACKEND_URL } from "../config/configg";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export function WriteBlog() {
   const [title, setTitle] = useState("");
@@ -11,14 +12,20 @@ export function WriteBlog() {
 
   async function postBlog() {
     try {
-      const response = await axios.post(`${BACKEND_URL}/api/v1/blog/writeBlog`, {
-        title, content
-      }, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+      const response = await axios.post(
+        `${BACKEND_URL}/api/v1/blog/writeBlog`,
+        {
+          title,
+          content,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         }
-      });      
-        naviagte(`/blog/getBlog/${response.data.id}`)      
+      );
+      toast("Blog Published");
+      naviagte(`/blog/getBlog/${response.data.id}`);
     } catch (err) {
       console.error("Error posting blog:", err);
     }
